@@ -48,8 +48,8 @@ Default::
 
 
 4. Add import `from uwkm_streamfields.models import STREAMFIELDS` to your project models.
-5. Use the `STREAMFIELDS` as such: ::
-
+5. Use the `STREAMFIELDS` as such:
+::
     class SomePage(Page):
         some_content = STREAMFIELDS
 
