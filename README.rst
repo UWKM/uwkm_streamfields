@@ -33,7 +33,8 @@ Installing uwkm_streamfields
 2. Add `uwkm_streamfields` to `INSTALLED_APPS` in your project settings.
 3. Add `SF_TEXT_COLORS` and `SF_BACKGROUND_COLORS` to your project settings.
 
-Default::
+Default
+::
     SF_TEXT_COLORS = [
         ('black', 'Black'),
         ('white', 'White'),
