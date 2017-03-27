@@ -1,0 +1,25 @@
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+<section class="home_testi">
+    <div class="testi">
+        {% for item in self %}
+        <div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="data text-center">
+                            <p>“{{item.quote}}”</span></p>
+                            <div class="author">
+                                <figure>{% image item.logo original %}</figure>
+                                <div class="fin1">{{item.name}}, <strong>{{item.company}}</strong>, {{item.city}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>

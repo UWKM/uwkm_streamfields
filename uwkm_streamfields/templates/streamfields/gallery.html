@@ -1,0 +1,20 @@
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+<section class="gallery">
+    <div class="container">
+    	<div class="row">
+    		<div class="col-xs-12">
+    			<div class="owl-carousel owl-theme">
+			        {% for item in self %}
+                        <div class="item">
+				        	{% image item.image width-230 as img %}
+				        	<img src="{{ img.file.url }}" />
+                        </div>
+			        {% endfor %}
+			    </div>
+		    </div>
+	    </div>
+    </div>
+</section>

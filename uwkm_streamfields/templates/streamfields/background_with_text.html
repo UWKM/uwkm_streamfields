@@ -1,0 +1,21 @@
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+<section class="background-text">
+    <div class="container">
+    	<div class="row">
+    		<div class="col-xs-12">
+		        {% for item in self %}
+		        	<div class="parallaxBg" style="background-image:url('{{ item.background_image.file.url }}'); height: {{ item.block_height }}px;">
+		        		<div class="container content-sm">
+							<div class="row {{ item.text_color }}" style="padding: 10px;text-align: {{ item.align }};">
+			           			{{ item.text }}
+			           		</div>
+			           </div>
+			       </div>
+		        {% endfor %}
+		    </div>
+	    </div>
+    </div>
+</section>

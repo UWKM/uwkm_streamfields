@@ -1,0 +1,32 @@
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+<section class="">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+            	<div class="table-responsive">
+					<table class="table table-striped table-bordered">
+					    {% for row in self.data %}
+					    	{% if self.first_row_is_table_header and forloop.first %}
+					    		<tr>
+						        	{% for column in row %}
+								    	<th>{% if column %}{{ column }}{% endif %}</th>
+						        	{% endfor %}
+						        </tr>
+					    	{% else %}
+						    	<tr>
+						        	{% for column in row %}
+								    	{% if self.first_col_is_header and forloop.first %}<th>{% else %}<td>{% endif %}
+										{% if column %}{{ column }}{% endif %}
+								    	{% if self.first_col_is_header and forloop.first %}</th>{% else %}</td>{% endif %}
+						        	{% endfor %}
+						        </tr>
+					    	{% endif %}
+					    {% endfor %}
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

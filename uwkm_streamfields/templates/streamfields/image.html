@@ -1,0 +1,13 @@
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+<section class="gallery">
+    <div class="container">
+    	<div class="row">
+    		<div class="col-xs-12">
+	        	<img src="{{ self.image.file.url }}" class="thumbnail" />
+		    </div>
+	    </div>
+    </div>
+</section>

@@ -1,0 +1,9 @@
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+<div class="col-xs-12">
+	{% for item in self %}
+		<hr class="{{ item.border_color }}">
+	{% endfor %}
+</div>

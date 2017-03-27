@@ -1,0 +1,14 @@
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			{% for item in self %}
+				<a href="{% if item.link %}{{ item.link.url }}"{% else %}{{ item.ext_link }}" target="_blank"{% endif %} class="btn {{ item.button_class }} {{ item.width }}">{% if item.icon %}<i class="fa fa-{{ item.icon }}"></i>{% endif %}{{ item.text }}</a>
+			{% endfor %}
+		</div>
+	</div>
+</div>

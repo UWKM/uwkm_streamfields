@@ -1,0 +1,15 @@
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+<section class="text">
+    <div class="container">
+        {% for item in self %}
+            <div class="row">
+                <div class="col-xs-12">
+                    {{ item.content|safe }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>

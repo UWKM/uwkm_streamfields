@@ -1,0 +1,16 @@
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+<section class="background-text">
+    <div class="container">
+        {% for item in self %}
+	    	<div class="row">
+	    		<div class="col-xs-12">
+		        	<i class="fa fa-{{ item.icon }} icon-block"></i>
+		        	<div class="icon-block">{{ item.text }}</div>
+			    </div>
+		    </div>
+        {% endfor %}
+    </div>
+</section>
