@@ -31,8 +31,7 @@ TABLE_OPTIONS = {
 }
 
 
-STREAMFIELDS = StreamField(
-    [('grid', blocks.ListBlock(
+STREAMFIELDS = [('grid', blocks.ListBlock(
         GridBlock(),
         template = 'streamfields/grid.html',
         icon='grip',))
@@ -82,7 +81,7 @@ STREAMFIELDS = StreamField(
     ,('divider', blocks.ListBlock(
         DividerBlock(),
         template = 'streamfields/divider.html',
-        icon="horizontalrule",))
+        icon="horizontalrule",))   
     ,('raw_html', blocks.ListBlock(
         HTMLBlock(),
         template = 'streamfields/raw_html.html',
@@ -107,7 +106,4 @@ STREAMFIELDS = StreamField(
         SliderBlock(),
         template = 'streamfields/slider.html',
         icon="image"))
-    ],
-    null = True,
-    blank = True
-)
+]
