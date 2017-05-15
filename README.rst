@@ -30,8 +30,9 @@ Installing uwkm_streamfields
 ============================
 
 1. Install the package using pip: `pip install uwkm_streamfields`.
-2. Add `uwkm_streamfields` to `INSTALLED_APPS` in your project settings.
-3. Add `SF_TEXT_COLORS` and `SF_BACKGROUND_COLORS` to your project settings.
+2. Add `wagtail.contrib.table_block` to `INSTALLED_APPS` in your project settings.
+3. Add `uwkm_streamfields` to `INSTALLED_APPS` in your project settings.
+4. Add `SF_TEXT_COLORS` and `SF_BACKGROUND_COLORS` to your project settings.
 
 Default
 ::
@@ -48,11 +49,15 @@ Default
     ]
 
 
-4. Add import `from uwkm_streamfields.models import STREAMFIELDS` to your project models.
-5. Use the `STREAMFIELDS` as such:
+5. Add import `from uwkm_streamfields.models import STREAMFIELDS` to your project models.
+6. Use the `STREAMFIELDS` as such:
 ::
     class SomePage(Page):
-        some_content = STREAMFIELDS
+        some_content = StreamField(
+            STREAMFIELDS,
+            null=True,
+            blank=True
+        )
 
         content_panels = [
             StreamFieldPanel('some_content'),

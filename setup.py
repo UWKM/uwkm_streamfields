@@ -1,10 +1,3 @@
-"""A setuptools based setup module.
-
-See:
-https://packaging.python.org/en/latest/distributing.html
-https://github.com/pypa/sampleproject
-"""
-
 # Always prefer setuptools over distutils
 from setuptools import setup, find_packages
 # To use a consistent encoding
@@ -24,29 +17,30 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='1.1.2',
+    version='2.0.2',
 
-    description='Wagtail Streamfields',
+    description='Wagtail Bootstrap Streamfields',
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/StefanJilsink/uwkm-streamfields/',
-    branch_url='https://github.com/StefanJilsink/uwkm-streamfields/tree/master',
-    download_url='https://github.com/StefanJilsink/uwkm-streamfields/archive/master.zip',
+    url='https://github.com/UWKM/uwkm_streamfields/',
+    branch_url='https://github.com/UWKM/uwkm_streamfields/tree/master',
+    download_url='https://github.com/UWKM/uwkm_streamfields/archive/master.zip',
 
     # Author details
-    author='Stefan Jilsink, Temoeri Sjamojani, UWKM.nl',
+    author='UWKM',
     author_email='support@uwkm.nl',
 
     # Choose your license
     license='MIT',
     include_package_data=True,
+    find_packages=find_packages(),
     zip_safe=False,
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[],
 
     # What does your project relate to?
-    keywords='wagtail cms streamfields uwkm',
+    keywords='wagtail cms streamfields bootstrap uwkm',
 
     # Alternatively, if you want to distribute just a my_module.py, uncomment
     # this:
