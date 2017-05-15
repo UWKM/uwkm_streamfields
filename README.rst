@@ -1,6 +1,7 @@
 UWKM WAGTAIL STREAMFIELDS
 =========================
 
+Jelle is een sjembek
 This is a set of pre-defined streamfields for Wagtail. It provides:
 
 - accordions
