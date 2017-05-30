@@ -2,16 +2,10 @@
 {% load wagtailcore_tags %}
 {% load static %}
 
-<section class="">
-    <div class="container">
-        <div class="row">
-            {% for item in self %}
-                <div class="col-md-6">
-                    <div class="embed-responsive embed-responsive-4by3">
-                        <iframe src="https://www.youtube.com/embed/{{ item.video_id }}" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen"></iframe>
-                    </div>
-                </div>
-            {% endfor %}
+<div class="col-md-12">
+	{% for item in self %}
+        <div class="embed-responsive embed-responsive-4by3">
+            <iframe src="https://www.youtube.com/embed/{{ item.video_id }}" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen"></iframe>
         </div>
-    </div>
-</section>
+	{% endfor %}
+</div>

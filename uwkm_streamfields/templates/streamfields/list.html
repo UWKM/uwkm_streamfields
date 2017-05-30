@@ -1,0 +1,13 @@
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+<div class="col-md-12">
+	{% for ul in self %}
+		<ul{% if ul.bullet_icon %} style="list-style-image: url('{{ ul.bullet_icon.file.url }}');"{% endif %}>
+			{% for bullet in ul.content %}
+				<li>{{ bullet|safe }}</li>
+			{% endfor %}
+		</ul>
+	{% endfor %}
+</div>

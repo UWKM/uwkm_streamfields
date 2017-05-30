@@ -1,14 +1,11 @@
-import os
-from django.conf.global_settings import *
+BS_SIZE = 'sm'
 
-SF_TEXT_COLORS = [
-	('black', 'Black'),
-	('white', 'White'),
-	('pink', 'Pink'),
-]
-
-SF_BACKGROUND_COLORS = [
-	('black', 'Black'),
-	('white', 'White'),
-	('pink', 'Pink'),
+CP_COLORS = [
+    '#0099ff',
+    '#00cc00',
+    '#ffff00',
+    '#ff6600',
+    '#cc0000',
+    '#ffffff',
+    '#000000',
 ]

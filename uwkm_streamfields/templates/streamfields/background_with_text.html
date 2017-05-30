@@ -2,20 +2,20 @@
 {% load wagtailcore_tags %}
 {% load static %}
 
-<section class="background-text">
-    <div class="container">
-    	<div class="row">
-    		<div class="col-xs-12">
-		        {% for item in self %}
-		        	<div class="parallaxBg" style="background-image:url('{{ item.background_image.file.url }}'); height: {{ item.block_height }}px;">
-		        		<div class="container content-sm">
-							<div class="row {{ item.text_color }}" style="padding: 10px;text-align: {{ item.align }};">
-			           			{{ item.text }}
-			           		</div>
-			           </div>
-			       </div>
-		        {% endfor %}
-		    </div>
-	    </div>
-    </div>
-</section>
+
+<div class="col-md-12">
+	{% for item in self %}
+		<div class="{{ item.type_field }}" style="background-image:url('{{ item.background_image.file.url }}'); height: {{ item.block_height }}px;">
+			<div class="container content-sm">
+				<div class="row">
+					<div class="col-md-6 text-right" style="padding-right: 5px; color: {{ item.text_color }} !important;">
+		       			{{ item.text_left }}
+		       		</div>
+					<div class="col-md-6" style="padding-left: 5px; color: {{ item.text_color }} !important;">
+		       			{{ item.text_right }}
+		       		</div>
+	       		</div>
+	       </div>
+	   </div>
+	{% endfor %}
+</div>

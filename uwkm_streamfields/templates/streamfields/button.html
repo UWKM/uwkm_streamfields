@@ -3,12 +3,6 @@
 {% load static %}
 
 
-<div class="container">
-	<div class="row">
-		<div class="col-xs-12">
-			{% for item in self %}
-				<a href="{% if item.link %}{{ item.link.url }}"{% else %}{{ item.ext_link }}" target="_blank"{% endif %} class="btn {{ item.button_class }} {{ item.width }}">{% if item.icon %}<i class="fa fa-{{ item.icon }}"></i>{% endif %}{{ item.text }}</a>
-			{% endfor %}
-		</div>
-	</div>
-</div>
+{% for item in self %}
+	<a href="{% if item.link %}{{ item.link.url }}"{% else %}{{ item.ext_link }}" target="_blank"{% endif %} class="btn {{ item.width }}" style="margin: 0 15px; background-color: {{ item.button_color }}; color: {{ item.color }}; font-size: {{ item.text_size }}px;">{% if item.icon %}<i class="fa fa-{{ item.icon }}" style="color: {{ item.color }};font-size: {{ item.icon_size }}px;"></i>{% endif %}{{ item.text }}</a>
+{% endfor %}

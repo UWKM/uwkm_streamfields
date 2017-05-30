@@ -1,0 +1,13 @@
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+<section>
+	<div class="container">
+		{% for block in self %}
+			<div class="{{ block.grid }}" style="padding: 0px;">
+				{{ block.content }}
+			</div>
+		{% endfor %}
+	</div>
+</section>

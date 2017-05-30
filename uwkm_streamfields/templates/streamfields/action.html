@@ -1,0 +1,15 @@
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+{% for item in self %}
+<div class="box_wrap">
+    <div class="box">
+        {% image item.image original as image %}
+        <figure><img src="{{ image.url }}" alt="{{ image.alt }}"/></figure>
+        <strong style="background:{{ item.color }};">{{ item.action }}</strong>
+        <div class="fin2">{% if item.datum %}<span>{{ item.datum }}</span>{% endif %}{{ item.title }}</div>
+    </div>
+    <a href="{{ item.link }}">{% if item.link_text %}>> {{ item.link_text }}{% endif %}</a>
+</div>
+{% endfor %}

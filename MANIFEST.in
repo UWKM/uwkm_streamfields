@@ -3,4 +3,4 @@ include LICENSE.txt
 include settings/base.py
 
 # Include the data files
-recursive-include templates/streamfields *.html
+recursive-include uwkm_streamfields/templates *.html

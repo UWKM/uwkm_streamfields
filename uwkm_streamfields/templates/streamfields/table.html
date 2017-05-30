@@ -1,32 +1,54 @@
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
 
-<section class="">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-            	<div class="table-responsive">
-					<table class="table table-striped table-bordered">
-					    {% for row in self.data %}
-					    	{% if self.first_row_is_table_header and forloop.first %}
-					    		<tr>
-						        	{% for column in row %}
-								    	<th>{% if column %}{{ column }}{% endif %}</th>
-						        	{% endfor %}
-						        </tr>
-					    	{% else %}
-						    	<tr>
-						        	{% for column in row %}
-								    	{% if self.first_col_is_header and forloop.first %}<th>{% else %}<td>{% endif %}
-										{% if column %}{{ column }}{% endif %}
-								    	{% if self.first_col_is_header and forloop.first %}</th>{% else %}</td>{% endif %}
-						        	{% endfor %}
-						        </tr>
-					    	{% endif %}
-					    {% endfor %}
-					</table>
-				</div>
-			</div>
-		</div>
+<div class="col-md-12">
+	<div class="table-responsive">
+		<table class="table table-striped table-bordered {{ self.table_borders }}">
+			{% if self.type_table == 'price-table' %}
+				{% for row in self.table.data %}
+			    	<tr>
+			    		{% if forloop.counter <= self.table_header_rows %}
+				        	{% for column in row %}
+					        	{% if column %}
+							    	<td style="font-size: {{ self.table_header_text_size }}px; color: {{ self.table_header_color }}; background-color: {{ self.table_header_background }};">{{ column|safe }}</td>
+						    	{% else %}
+						    		<td class="empty"></td>
+					    		{% endif %}
+				        	{% endfor %}
+			    		{% elif forloop.revcounter <= self.table_footer_rows %}
+				        	{% for column in row %}
+				        		{% if column %}
+						    		<td style="color: {{ self.table_footer_color }}; background-color: {{ self.table_footer_background }};">{{ column|safe }}</td>
+						    	{% else %}
+						    		<td class="empty"></td>
+					    		{% endif %}
+				        	{% endfor %}
+			        	{% else %}
+							{% for column in row %}
+						    	<td>{% if column %}{{ column|safe }}{% endif %}</td>
+				        	{% endfor %}
+			        	{% endif %}
+			        </tr>
+			    {% endfor %}
+			{% else %}
+			    {% for row in self.table.data %}
+			    	{% if self.table.first_row_is_table_header and forloop.first %}
+			    		<tr>
+				        	{% for column in row %}
+						    	<th>{% if column %}{{ column }}{% endif %}</th>
+				        	{% endfor %}
+				        </tr>
+			    	{% else %}
+				    	<tr>
+				        	{% for column in row %}
+						    	{% if self.table.first_col_is_header and forloop.first %}<th>{% else %}<td>{% endif %}
+								{% if column %}{{ column|safe }}{% endif %}
+						    	{% if self.table.first_col_is_header and forloop.first %}</th>{% else %}</td>{% endif %}
+				        	{% endfor %}
+				        </tr>
+			    	{% endif %}
+			    {% endfor %}
+		    {% endif %}
+		</table>
 	</div>
-</section>
+</div>

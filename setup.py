@@ -12,12 +12,11 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='uwkm_streamfields',
-    packages=['uwkm_streamfields'],
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='2.0.2',
+    version='1.0.0',
 
     description='Wagtail Bootstrap Streamfields',
     long_description=long_description,
@@ -34,8 +33,8 @@ setup(
     # Choose your license
     license='MIT',
     include_package_data=True,
-    find_packages=find_packages(),
-    zip_safe=False,
+    packages=find_packages(),
+
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[],
 

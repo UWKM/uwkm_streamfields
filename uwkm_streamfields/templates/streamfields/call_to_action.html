@@ -2,17 +2,11 @@
 {% load wagtailcore_tags %}
 {% load static %}
 
-<section class="background-text">
-    <div class="container">
-    	<div class="row">
-    		<div class="col-xs-12">
-		        {% for item in self %}
-		        	<div class="call-to-action">
-		        		{{ item.text }}
-		        		<a href="{% if item.button.link %}{{ item.button.link.url }}"{% else %}{{ item.button.ext_link }}" target="_blank"{% endif %} class="cta btn {{ item.button.button_class }} {{ item.button.width }}">{% if item.button.icon %}<i class="fa fa-{{ item.button.icon }}"></i>{% endif %}{{ item.button.text }}</a>
-			       </div>
-		        {% endfor %}
-		    </div>
-	    </div>
-    </div>
-</section>
+<div class="col-md-12">
+	{% for item in self %}
+		<div class="call-to-action">
+			{{ item.text }}
+			<a href="{% if item.button.link %}{{ item.button.link.url }}"{% else %}{{ item.button.ext_link }}" target="_blank"{% endif %} class="cta btn {{ item.button.width }}" style="background-color: {{ item.button.button_color }}; color: {{ item.button.color }}; font-size: {{ item.button.text_size }}px;">{% if item.icon %}<i class="fa fa-{{ item.button.icon }}" style="color: {{ item.button.color }};font-size: {{ item.button.icon_size }}px;"></i>{% endif %}{{ item.button.text }}</a>
+	   </div>
+	{% endfor %}
+</div>

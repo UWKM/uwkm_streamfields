@@ -2,15 +2,8 @@
 {% load wagtailcore_tags %}
 {% load static %}
 
-
-<section>
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12">
-				{% for item in self %}
-					{{ item.raw_html }}
-				{% endfor %}
-			</div>
-		</div>
-	</div>
-</section>
+<div class="col-md-12">
+	{% for item in self %}
+		{{ item.raw_html }}
+	{% endfor %}
+</div>

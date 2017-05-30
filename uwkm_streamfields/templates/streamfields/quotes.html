@@ -5,21 +5,20 @@
 <section class="home_testi">
     <div class="testi">
         {% for item in self %}
-        <div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="data text-center">
-                            <p>“{{item.quote}}”</span></p>
-                            <div class="author">
-                                <figure>{% image item.logo original %}</figure>
-                                <div class="fin1">{{item.name}}, <strong>{{item.company}}</strong>, {{item.city}}</div>
-                            </div>
-                        </div>
+            <div class="data text-center eql_height" style="background-color: {{ item.quote_background_color }};">
+                {% if item.link %}<a href="{{ item.link.url }}">{% endif %}
+                    {% if item.quote_pos == 'up' %}
+                        <p style="font-size: {{ item.quote_size }}; color: {{ item.quote_color }}; line-height: {{ item.quote_size }};">“{{item.quote}}”</p>
+                    {% endif %}
+                    <div class="author">
+                        <figure>{% image item.logo original %}</figure>
+                        <div class="fin1" style="color: {{ item.quote_color }};">{{item.name}}, <strong>{{item.company}}</strong>, {{item.city}}</div>
                     </div>
-                </div>
+                    {% if item.quote_pos == 'under' %}
+                        <p style="font-size: {{ item.quote_size }}; color: {{ item.quote_color }}; line-height: {{ item.quote_size }};">“{{item.quote}}”</p>
+                    {% endif %}
+                {% if item.link %}</a>{% endif %}
             </div>
-        </div>
         {% endfor %}
     </div>
 </section>

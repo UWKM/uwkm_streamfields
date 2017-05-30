@@ -2,19 +2,17 @@
 {% load wagtailcore_tags %}
 {% load static %}
 
-<section class="gallery">
-    <div class="container">
-    	<div class="row">
-    		<div class="col-xs-12">
-    			<div class="owl-carousel owl-theme">
-			        {% for item in self %}
-                        <div class="item">
-				        	{% image item.image width-230 as img %}
-				        	<img src="{{ img.file.url }}" />
-                        </div>
-			        {% endfor %}
-			    </div>
-		    </div>
-	    </div>
-    </div>
-</section>
+<div class="col-md-12">
+	{% for gallery in self %}
+
+		<div class="masonry-gallery clearfix lightbox columns-{{ gallery.columns }}" data-columns="{{ gallery.columns }}"{% if gallery.big_img %} data-img-big="{{ gallery.big_img }}"{% endif %} data-plugin-options='{"delegate": "a", "gallery": {"enabled": true}}'>
+		    {% for item in gallery.image %}
+		    	<a class="image-hover" href="{{ item.file.url }}">
+		    		<span class="image-hover-icon image-hover-dark"></span>
+		    		<img src="{{ item.file.url }}" alt="{{ item.file.title }}">
+		    	</a>
+		    {% endfor %}
+		</div>
+
+	{% endfor %}
+</div>

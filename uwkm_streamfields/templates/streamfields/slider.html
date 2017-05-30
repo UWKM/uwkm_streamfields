@@ -12,7 +12,7 @@
             </figure>
             {% if item.button %}
             <div class="banner_over {{item.cta_pos}}">
-                <a href="{% if item.cta_link_type == 'wagtail' %}{{item.cta_page_link.url}}{% else %}{{item.cta_url}}{% endif %}">
+                <a href="{% if item.cta_link_type == 'wagtail' %}{{item.cta_page_link.url}}{% else %}{{item.cta_url}}{% endif %}" class="{{ item.cta_color }}" style="{% if not item.cta_color %}background-color:{{ item.cta_color_picker }};{% endif %}">
                     <img src="{% static 'images/forward_wit.svg' %}" alt="">
                     <span>{{item.cta_text}}</span>
                 </a>
@@ -21,8 +21,8 @@
         </div>
         {% endfor %}
     </div>
-   <div class="banner-thumb" id="banner-thumb">
-       <div class="thumb-slide">
+    <div class="banner-thumb" id="banner-thumb">
+        <div class="thumb-slide">
         {% for item in self %}
             <div>
                 <div class="box-data">
@@ -33,6 +33,6 @@
                 </div>
             </div>
         {% endfor %}
-       </div>
-  </div>
+        </div>
+    </div>
 </section>

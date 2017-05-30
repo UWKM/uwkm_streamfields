@@ -2,12 +2,13 @@
 {% load wagtailcore_tags %}
 {% load static %}
 
-<section class="gallery">
-    <div class="container">
-    	<div class="row">
-    		<div class="col-xs-12">
-	        	<img src="{{ self.image.file.url }}" class="thumbnail" />
-		    </div>
-	    </div>
-    </div>
-</section>
+<div class="col-md-12">
+	{% for image in self %}
+		<div class="lightbox" data-img-big="4" data-plugin-options='{"delegate": "a", "gallery": {"enabled": true}}'>
+	    	<a class="image-hover lightbox" href="{{ image.image.file.url }}">
+	    		<span class="image-hover-icon image-hover-dark"></span>
+	    		<img src="{{ image.image.file.url }}" {% if image.animation %}class="animated invisible" data-animation="{{ image.animation }}"{% endif %} />
+	    	</a>
+		</div>
+	{% endfor %}
+</div>
