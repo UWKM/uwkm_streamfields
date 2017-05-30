@@ -1,0 +1,23 @@
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+<section class="home_service">
+    <div class="container">
+        <div class="row">
+            {% for item in self %}
+                <div class="col-sm-4 col-xs-12">
+                    <div class="service_box">
+                        <figure>
+                            {% image item.image original %}
+                        </figure>
+                        <div class="fin">
+                            <strong>{{item.title}}</strong>
+                            <p>{{item.text}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

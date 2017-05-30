@@ -12,6 +12,7 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailforms.models import AbstractEmailForm, AbstractFormField
 
 from .icons import IconChoiceBlock
+from .widgets import *
 
 TABLE_OPTIONS = {
     'minSpareRows': 0,
@@ -59,13 +60,6 @@ class GridChoiceBlock(blocks.ChoiceBlock):
         ('col-%s-2' % BS_SIZE, '2'),
         ('col-%s-1' % BS_SIZE, '1'),
     ]
-class MultipleImageChooserBlock(blocks.ChooserBlock):
-    target_model = Image
-
-
-    def __init__(self, required=True, **kwargs):
-        self.field = forms.MultipleChoiceField(required=required)
-        super(MultipleImageChooserBlock, self).__init__(**kwargs)
 
 
 class GalleryBlock(blocks.StructBlock):
@@ -509,7 +503,7 @@ class TableStructBlock(blocks.StructBlock):
         required = False,
     )
     table = TableBlock(
-        table_options=spec_table_options,
+        table_options=TABLE_OPTIONS,
         label='Tabel',
         help_text='HTML is mogelijk in de tabel'
     )

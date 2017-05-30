@@ -1,0 +1,155 @@
+.selected-icon i {
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 25px;
+}
+
+.selected-color {
+	padding: 10px 0;
+}
+
+.selected-color p {
+	line-height: 27px;
+	margin: 0;
+	display: inline-block;
+}
+
+.selected-color span {
+	height: 25px;
+	width: 100px;
+	display: inline-block;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	float: right;
+}
+
+span.primary-cta {
+    background-color: #00ABFF;
+}
+
+span.primary-cta:hover {
+    background-color: #008BCF;
+}
+
+span.secondary-cta {
+    background-color: #C3007A;
+    color: #FFFFFF;
+}
+
+span.secondary-cta:hover {
+    background-color: #A30066;
+}
+
+span.limegreen {
+    background-color: #D7EE43;
+}
+
+span.lightgray {
+    background-color: #F3F3F3;
+}
+
+span.midgray {
+    background-color: #CECDCD;
+}
+
+span.darkgray {
+    background-color: #505050;
+}
+
+span.lightblue {
+    background-color: #C0DEFF;
+}
+
+span.black {
+	background-color: black;
+}
+
+span.white {
+	background-color: white;
+}
+
+
+/*--colorpicker--*/
+
+.bfh-colorpicker.open .bfh-colorpicker-popover {
+	visibility: visible;
+	position: relative;
+}
+
+.bfh-colorpicker .bfh-colorpicker-popover {
+	visibility: hidden;
+	position: absolute;
+	border: 1px solid #e6e6e6;
+	padding: 2px;
+	box-shadow: 5px 5px rgba(91, 91, 91, 0.2);
+	width: 422px;
+}
+
+.bfh-colorpicker .bfh-colorpicker-popover canvas {
+	cursor: crosshair;
+	float: right;
+}
+
+
+.input-group input {
+	padding-left: 50px;
+}
+
+.input-group .input-group-addon {
+	width: 50px;
+	position: absolute;
+	float: left;
+	height: 50px;
+	background-color: transparent;
+}
+
+.input-group .input-group-addon .colorpicker-icon {
+    width: 40px;
+    height: 40px;
+    display: block;
+    margin: 5px;
+    border-radius: 4px;
+}
+
+
+.presets .color-icon {
+	width: 32px;
+	height: 32px;
+	content: "";
+	margin: 2px;
+	border-radius: 4px;
+	cursor: pointer;
+
+}
+
+.presets {
+    position: absolute;
+	top: 104px;
+    left: 2px;
+    display: none;
+}
+
+.open .presets {
+	display: block;
+}
+
+/*--end colorpicker--*/
+
+
+@media screen and (min-width: 50em) {
+	label {
+		width: 100%;
+	}
+}
+
+@media screen and (min-width: 50em) {
+	.field-content {
+	    width: 100%;
+	}
+}
+
+.object .richtext.expanded {/*
+	padding-top: 1em !important;
+	padding-bottom: 1em !important;*/
+}

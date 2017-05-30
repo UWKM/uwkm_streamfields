@@ -1,0 +1,17 @@
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+<section class="accordions">
+    <div class="container">
+    	<div class="row">
+	        {% for item in self %}
+    			<div class="{{ item.grid }}">
+    				<div class="row">
+			           {{ item.content }}
+			    	</div>
+		    	</div>
+	        {% endfor %}
+	    </div>
+    </div>
+</section>
