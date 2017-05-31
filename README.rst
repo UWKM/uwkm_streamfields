@@ -83,3 +83,4 @@ Settings uwkm_streamfields
 
     STREAMFIELDS = '__all__'
     EXCLUDE_STREAMFIELDS = []
+
