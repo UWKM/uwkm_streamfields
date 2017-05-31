@@ -36,6 +36,7 @@ Installing uwkm_streamfields
 5. Add import `from uwkm_streamfields.blocks import GridBlock` to your project models.
 6. Use the `GridBlock` as such:
 
+models.py
 ::
     class SomePage(Page):
         some_content = StreamField(
@@ -68,6 +69,7 @@ somepage.html
 
 8. Change the settings as you like:
 
+settings.py
 ::
     BS_SIZE = 'sm'
 
