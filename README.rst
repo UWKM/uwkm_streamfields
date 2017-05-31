@@ -58,6 +58,7 @@ Installing uwkm_streamfields
         ]
 
 7. Use `some_content` as such:
+
 somepage.html
 ::
     {% for block in page.some_content %}
@@ -66,6 +67,7 @@ somepage.html
 
 Settings uwkm_streamfields
 ==========================
+
 ::
     BS_SIZE = 'sm'
 
