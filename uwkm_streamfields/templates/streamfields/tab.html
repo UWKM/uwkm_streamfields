@@ -6,7 +6,10 @@
 	<div class="tabs">
 		<ul class="nav nav-tabs">
 			{% for item in self %}
-				<li class="{% if forloop.first %}active{% endif %}"><a href="#{{ item.title|lower|cut:" " }}" data-toggle="tab" aria-expanded="false">{{ item.title }}</a></li>
+				<li class="{% if forloop.first %}active{% endif %}"><a href="#{{ item.title|lower|cut:" " }}" data-toggle="tab" aria-expanded="false">
+					{% if item.icon %}<i class="fa fa-{{ item.icon }}"></i> {% endif %}
+					{{ item.title }}</a>
+				</li>
 			{% endfor %}
 		</ul>
 		<div class="tab-content">

@@ -1,0 +1,31 @@
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+<div class="col-md-12">
+	<div class="row">
+		<div class="col-sm-4">
+			<ul class="list-group">
+				{% for item in self %}
+					<li class="list-group-item {% if forloop.first %}active{% endif %}" href="#{{ item.title|lower|cut:" " }}" data-toggle="tab" aria-expanded="false">
+						{% if item.icon %}<i class="fa fa-{{ item.icon }}"></i>{% endif %}
+						{{ item.title }}
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div class="col-sm-8">
+			<div class="tab-content">
+				{% for item in self %}
+					<div class="tab-pane fade {% if forloop.first %}active in{% endif %}" id="{{ item.title|lower|cut:" " }}">
+						<div class="row">
+							<div class="col-md-12">
+								{{ item.content|safe }}
+							</div>
+						</div>
+					</div>
+		        {% endfor %}
+		    </div>
+		</div>
+	</div>
+</div>

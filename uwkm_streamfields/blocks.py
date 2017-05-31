@@ -270,6 +270,11 @@ class AccordionBlock(blocks.StructBlock):
 
 
 class TabBlock(blocks.StructBlock):
+    icon = IconChoiceBlock(
+        label = 'Icoon',
+        help_text = 'Icoon. (Font awesome)',
+        required = False,
+    )
     title = blocks.CharBlock(
         label = 'Titel',
         max_length = 50,
@@ -592,6 +597,10 @@ grid_array = \
         TabBlock(),
         template = 'streamfields/tab.html',
         icon='list-ol',))
+    ,('verticale_tabs', blocks.ListBlock(
+        TabBlock(),
+        template = 'streamfields/vertical_tab.html',
+        icon='list-ol',))    
     ,('afbeelding_met_tekst', blocks.ListBlock(
         BackgroundBlock(),
         template = 'streamfields/background_with_text.html',
@@ -687,7 +696,7 @@ else:
 class GridBlock(blocks.StructBlock):
     grid = GridChoiceBlock(
         label = 'Breedte kolom',
-        help_text = 'De breedte kolommen (12 breedste, 1 smalste).',
+        help_text = 'De breedte kolommen (*/12).',
     )
     content = blocks.StreamBlock(
         validated_grid_array,
