@@ -1,0 +1,18 @@
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+
+
+<div class="col-md-12">
+	{% for item in self %}
+		{% image item.image width-240 as photo %}
+		<div class="callout-box bg-lightgrey noradius text-left margin-bottom-30 ">
+			<div class="image-wrapper">
+				<img style="float:left; margin-right:20px;" src="{{ photo.url }}" height="100%" alt="{{ item.backgroundimage.title }}">
+			</div>
+			<div class="text-wrapper padding-20">
+				<h2 class="title weight-300">{{ item.title }}</h2>
+				<a href="{{ item.link.url }}" class="btn bg-orange white noborder noradius btn-default btn-lg margin-top-10">{{ item.buttontext|upper }}</a>
+			</div>
+		</div>
+	{% endfor %}
+</div>

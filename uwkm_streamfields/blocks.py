@@ -10,6 +10,7 @@ from wagtail.contrib.table_block.blocks import TableBlock
 from wagtail.wagtailcore import blocks
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailforms.models import AbstractEmailForm, AbstractFormField
+from wagtail.wagtaildocs.blocks import DocumentChooserBlock
 
 from .icons import IconChoiceBlock
 from .widgets import *
@@ -62,7 +63,7 @@ class GridChoiceBlock(blocks.ChoiceBlock):
     ]
 
 
-class GalleryBlock(blocks.StructBlock):
+class MasonryGalleryBlock(blocks.StructBlock):
     columns = blocks.ChoiceBlock(
         label = 'Kolommen',
         default = '4',
@@ -522,89 +523,174 @@ class ActionBlock(blocks.StructBlock):
     link = blocks.CharBlock(verbose_name="Link url", help_text="Vul hier een url handmatig in. Bijvoorbeeld: /contact/ of www.google.nl")
     link_text = blocks.CharBlock(verbose_name="Link tekst", help_text="Vul hier een url tekst handmatig in. Bijvoorbeeld: bekijk alle blogartikelen of bekijk alle reviews. ")
 
+
+class LogoBlock(blocks.StructBlock):
+    link = blocks.PageChooserBlock()
+    icon = ImageChooserBlock()
+    title = blocks.CharBlock(blank=True,default='')
+    image = ImageChooserBlock()
+
+
+class DownloadLinkBlock(blocks.StructBlock):
+    title = blocks.CharBlock(blank=True,default='')
+    buttontext = blocks.CharBlock(blank=True,default='')
+    link = DocumentChooserBlock()
+    image = ImageChooserBlock()
+
+class RevSliderBlock(blocks.StructBlock):
+    image = ImageChooserBlock()
+
+
+class OwlGalleryBlock(blocks.StructBlock):
+    image = ImageChooserBlock()
+
+
+class CoworkerBlock(blocks.StructBlock):
+    name = blocks.CharBlock(max_length=255,blank=True)
+    roepnaam = blocks.CharBlock(max_length=255, null=True,blank=True)
+    job_function = blocks.CharBlock(max_length=255, blank=True, null=True)
+    address = blocks.CharBlock(max_length=255, blank=True, null=True, required=False,)
+    email = blocks.EmailBlock(max_length=254, blank=True, null=True, required=False,)
+    phone = blocks.CharBlock(max_length=255, blank=True, null=True, required=False,)
+    linkedin = blocks.URLBlock(max_length=200, blank=True, null=True, required=False,)
+    positions = blocks.IntegerBlock(default=1)
+    image = ImageChooserBlock()
+
+class ProjectBlock(blocks.StructBlock):
+    title = blocks.CharBlock(blank=True,default='')
+    image = ImageChooserBlock()
+    link = blocks.PageChooserBlock()
+
+
+
+grid_array = \
+    [('tabellen', TableStructBlock(
+        label='Tabellen',
+        template = 'streamfields/table.html',
+        icon='fa-table'))
+    ,('citaten', blocks.ListBlock(
+        QuoteBlock(),
+        template = 'streamfields/quotes.html',
+        icon="openquote",))
+    ,('koppen', blocks.ListBlock(
+        HeaderBlock(),
+        template = 'streamfields/header.html',
+        icon="title",))
+    ,('tekst_velden', blocks.ListBlock(
+        TextFieldBlock(),
+        template = 'streamfields/text_field.html',
+        icon="fa-align-justify",))
+    ,('lijst', blocks.ListBlock(
+        UnorderedListBlock(),
+        template = 'streamfields/list.html',
+        icon="list-ul"))
+    ,('accordions', blocks.ListBlock(
+        AccordionBlock(),
+        template = 'streamfields/accordion.html',
+        icon='list-ol',))
+    ,('tabs', blocks.ListBlock(
+        TabBlock(),
+        template = 'streamfields/tab.html',
+        icon='list-ol',))
+    ,('afbeelding_met_tekst', blocks.ListBlock(
+        BackgroundBlock(),
+        template = 'streamfields/background_with_text.html',
+        icon='doc-full',))
+    ,('gekleurde_blokken', blocks.ListBlock(
+        ColoredTextBlock(),
+        template = 'streamfields/colored_block.html',
+        icon="doc-full-inverse",))
+    ,('masonry_gallerij', blocks.ListBlock(
+        MasonryGalleryBlock(),
+        template = 'streamfields/masonry_gallery.html',
+        icon='fa-th',))
+    ,('owl_gallerij', blocks.ListBlock(
+        OwlGalleryBlock(),
+        template = 'streamfields/owl_gallery.html',
+        icon='image',))
+    ,('afbeelding', blocks.ListBlock(
+        ImageChooserBlock(),
+        template = 'streamfields/image.html',
+        icon='image'))
+    ,('divider', blocks.ListBlock(
+        DividerBlock(),
+        template = 'streamfields/divider.html',
+        icon="horizontalrule",))   
+    ,('html', blocks.ListBlock(
+        HTMLBlock(),
+        template = 'streamfields/raw_html.html',
+        icon="code",))
+    ,('knop', blocks.ListBlock(
+        ButtonBlock(),
+        template = 'streamfields/button.html',
+        icon="fa-hand-pointer-o",))
+    ,('video', blocks.ListBlock(
+        VideoBlock(),
+        template = 'streamfields/video.html',
+        icon="media",))
+    ,('icoon', blocks.ListBlock(
+        IconBlock(),
+        template = 'streamfields/icon_block.html',
+        icon="fa-font-awesome",))
+    ,('call_to_action', blocks.ListBlock(
+        CallToActionBlock(),
+        template = 'streamfields/call_to_action.html',
+        icon="fa-reply",))
+    ,('tab_slider', blocks.ListBlock(
+        SliderBlock(),
+        template = 'streamfields/tab_slider.html',
+        icon="image"))
+    ,('actie', blocks.ListBlock(
+        ActionBlock(),
+        template = 'streamfields/action.html',
+        icon="fa-exclamation"))
+    ,('logo_blokken', blocks.ListBlock(
+        LogoBlock(), 
+        template = 'streamfields/logo_block.html', 
+        icon="image"))
+    ,('download_link', blocks.ListBlock(
+        DownloadLinkBlock(),
+        template = 'streamfields/download_link.html',
+        icon='fa-download'))
+    ,('rev_slider', blocks.ListBlock(
+        RevSliderBlock(), 
+        template = 'streamfields/rev_slider.html', 
+        icon="image"))
+    ,('medewerker', blocks.ListBlock(
+        CoworkerBlock(),
+        template = 'streamfields/coworker.html',
+        icon="fa-user-plus"))
+    ,('project', blocks.ListBlock(
+        ProjectBlock(),
+        template = 'streamfields/project.html',
+        icon="fa-comments-o"))
+    ,]
+
+validated_grid_array = []
+STREAMFIELDS = settings.STREAMFIELDS
+EXCLUDE_STREAMFIELDS = settings.EXCLUDE_STREAMFIELDS
+
+# validate streamfields
+if STREAMFIELDS == '__all__':
+    if len(EXCLUDE_STREAMFIELDS) > 0:
+        for streamfield in grid_array:
+            if streamfield[0] not in EXCLUDE_STREAMFIELDS:
+                validated_grid_array.append(streamfield)
+    else:
+        validated_grid_array = grid_array
+else:
+    for streamfield in grid_array:
+        if streamfield[0] in STREAMFIELDS:
+            validated_grid_array.append(streamfield)
+
+
 class GridBlock(blocks.StructBlock):
     grid = GridChoiceBlock(
         label = 'Breedte kolom',
         help_text = 'De breedte kolommen (12 breedste, 1 smalste).',
     )
     content = blocks.StreamBlock(
-        [('tabellen', TableStructBlock(
-            label='Tabellen',
-            template = 'streamfields/table.html',
-            icon='fa-table'))
-        ,('citaten', blocks.ListBlock(
-            QuoteBlock(),
-            template = 'streamfields/quotes.html',
-            icon="openquote",))
-        ,('koppen', blocks.ListBlock(
-            HeaderBlock(),
-            template = 'streamfields/header.html',
-            icon="title",))
-        ,('tekst_velden', blocks.ListBlock(
-            TextFieldBlock(),
-            template = 'streamfields/text_field.html',
-            icon="fa-align-justify",))
-        ,('lijst', blocks.ListBlock(
-            UnorderedListBlock(),
-            template = 'streamfields/list.html',
-            icon="list-ul"))
-        ,('accordions', blocks.ListBlock(
-            AccordionBlock(),
-            template = 'streamfields/accordion.html',
-            icon='list-ol',))
-        ,('tabs', blocks.ListBlock(
-            TabBlock(),
-            template = 'streamfields/tab.html',
-            icon='list-ol',))
-        ,('afbeelding_met_tekst', blocks.ListBlock(
-            BackgroundBlock(),
-            template = 'streamfields/background_with_text.html',
-            icon='doc-full',))
-        ,('gekleurde_blokken', blocks.ListBlock(
-            ColoredTextBlock(),
-            template = 'streamfields/colored_block.html',
-            icon="doc-full-inverse",))
-        ,('gallerij', blocks.ListBlock(
-            GalleryBlock(),
-            template = 'streamfields/gallery.html',
-            icon='image',))
-        ,('afbeelding', blocks.ListBlock(
-            ImageChooserBlock(),
-            template = 'streamfields/image.html',
-            icon='image'))
-        ,('divider', blocks.ListBlock(
-            DividerBlock(),
-            template = 'streamfields/divider.html',
-            icon="horizontalrule",))   
-        ,('html', blocks.ListBlock(
-            HTMLBlock(),
-            template = 'streamfields/raw_html.html',
-            icon="code",))
-        ,('knop', blocks.ListBlock(
-            ButtonBlock(),
-            template = 'streamfields/button.html',
-            icon="fa-hand-pointer-o",))
-        ,('video', blocks.ListBlock(
-            VideoBlock(),
-            template = 'streamfields/video.html',
-            icon="media",))
-        ,('icoon', blocks.ListBlock(
-            IconBlock(),
-            template = 'streamfields/icon_block.html',
-            icon="fa-font-awesome",))
-        ,('call_to_action', blocks.ListBlock(
-            CallToActionBlock(),
-            template = 'streamfields/call_to_action.html',
-            icon="fa-reply",))
-        ,('diavoorstelling', blocks.ListBlock(
-            SliderBlock(),
-            template = 'streamfields/slider.html',
-            icon="image"))
-        ,('actie', blocks.ListBlock(
-            ActionBlock(),
-            template = 'streamfields/action.html',
-            icon="fa-exclamation"))
-        ],
+        validated_grid_array,
         label="Inhoud"
     )
 

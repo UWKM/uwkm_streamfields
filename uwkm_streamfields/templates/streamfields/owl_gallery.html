@@ -1,0 +1,11 @@
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+<div class="col-md-12">
+	<div data-plugin-options='{"singleItem": false, "items":"1", "autoPlay": 4000, "navigation": false, "pagination": false}' class="owl-carousel owl-theme">
+	    {% for item in self %}
+	    	<img src="{{ item.image.file.url }}" />
+	    {% endfor %}
+	</div>
+</div>

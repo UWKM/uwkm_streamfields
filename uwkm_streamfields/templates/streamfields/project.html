@@ -1,0 +1,25 @@
+{% load wagtailimages_tags %}
+
+<div class="col-md-12">
+	<div id="portfolio" class="margin-top-20 portfolio-gutter portfolio-title-over">
+		{% for item in self %}
+			<div class="mix photography"><!-- item -->
+				<a class="ico-rounded" href="{{ item.link.url }}">
+					<div class="item-box">
+						<figure>
+							<span class="item-hover">
+								<span class="overlay dark-3"></span>
+								<span class="inner"></span>
+							</span>
+							<div class="item-box-overlay-title text-left">
+								<h2>{{ item.title|upper }}</h2>
+							</div>
+							{% image item.image width-1000 as photo %}
+							<img class="img-responsive" src="{{ photo.url }}" width="600" height="399" alt="{{ item.alt }}">
+						</figure>
+					</div>
+				</a>
+			</div>
+		{% endfor %}
+	</div>
+</div>

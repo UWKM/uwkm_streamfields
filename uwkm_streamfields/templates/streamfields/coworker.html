@@ -1,0 +1,43 @@
+{% load static wagtailuserbar %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+
+<div class="col-md-12">
+	<div class="owl-carousel owl-padding-10 buttons-autohide controlls-over" data-plugin-options='{"touchDrag": false, "mouseDrag": false, "singleItem": false, "items":"4", "autoPlay": 4000, "navigation": true, "pagination": false}'>
+		{% for coworker in self %}
+		    <div class="img-hover smoelenboek-single" style="margin:5px;">
+		      {% image coworker.image fill-267x267 as img %}
+		    	<img style="height:auto;" class="img-responsive" src="{{ img.url }}" alt="{{ coworker.name }}" />
+		    	<div class="text-wrapper bg-lightgrey padding-10" style="min-height: 224px !important;">
+		    		<p class="lead text-left padding-top-20 margin-bottom-0">
+		    			<a>{{ coworker.name }}</a>
+		    		</p>
+		    		<p class="text-left" style="height:73px;">{{ coworker.job_function }}<br>
+		    			<i>{{ coworker.address }}</i>
+		    		</p>
+		        	<div class="row">
+		    			<div class="col-md-9 col-sm-9 col-xs-9 mail-to text-left" style="width:86%;word-break:break-all;">
+		                  	{% if coworker.email %}
+    				        	<a href="mailto:{{ coworker.email }}">
+    				        		<i class="fa fa-envelope-o" aria-hidden="true"></i> Mail naar {{ coworker.roepnaam }}
+    				        	</a>
+    				        	<br>
+		                  	{% endif %}
+		                  	{% if coworker.phone %}
+    				        	<a href="tel:{{ coworker.phone }}">
+    				        		<i class="fa fa-phone" aria-hidden="true"></i> Bel {{ coworker.phone }}
+    				        	</a>
+		                  	{% endif %}
+		    			</div>
+		    			<div class="col-md-3 col-sm-3 col-xs-3 linked-in text-right" style="width:3%;">
+		    				{% if coworker.linkedin|length > 0 %}
+		    					<a href="{{ coworker.linkedin }}" target="_blank"><i style="margin-left:-15px;" class="fa fa-linkedin" aria-hidden="true"></i></a>
+		    				{% endif %}
+		    			</div>
+		    		</div>
+		    	</div>
+		    </div>
+		{% endfor %}
+	</div>
+</div>

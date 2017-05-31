@@ -1,0 +1,18 @@
+{% load static %}
+{% load wagtailimages_tags %}
+
+<div class="col-md-12">
+	{% for item in self %}
+		<div class="box-icon box-icon-center box-icon-round">
+			<a class="box-icon-title" href="{{ item.link.url }}">
+				<div class="zoom_img">
+					{% image item.icon height-100 %}
+				</div>
+				<br />
+				<h3 class="grey margin-top-20 margin-bottom-0">{{ item.title }}</h3>
+				<br />
+				{% image item.image height-80 %}
+			</a>
+		</div>
+	{% endfor %}
+</div>

@@ -9,3 +9,6 @@ CP_COLORS = [
     '#ffffff',
     '#000000',
 ]
+
+STREAMFIELDS = '__all__'
+EXCLUDE_STREAMFIELDS = []

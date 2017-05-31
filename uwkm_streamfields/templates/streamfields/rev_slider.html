@@ -1,0 +1,17 @@
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+
+<div class="col-md-12">
+	<div class="slider fullwidthbanner-container roundedcorners">
+		<div class="fullwidthbanner" data-height="450" data-shadow="0" data-navigationStyle="preview2">
+			<ul class="hide">
+				{% for item in self %}
+					<li data-transition="fade" data-slotamount="1" data-masterspeed="1500" data-delay="10000" data-saveperformance="off" data-title="">
+					{% image item.image height-2000 %}
+					</li>
+				{% endfor %}
+			</ul>
+			<div class="tp-bannertimer"></div>
+		</div>
+	</div>
+</div>
