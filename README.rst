@@ -68,7 +68,7 @@ somepage.html
 Settings uwkm_streamfields
 ==========================
 
-::
+`
     BS_SIZE = 'sm'
 
     CP_COLORS = [
@@ -83,4 +83,4 @@ Settings uwkm_streamfields
 
     STREAMFIELDS = '__all__'
     EXCLUDE_STREAMFIELDS = []
-
+`
