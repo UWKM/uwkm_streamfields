@@ -87,5 +87,45 @@ settings.py
     EXCLUDE_STREAMFIELDS = []
 
 
+9. Make sure you atleast have the following javascripts/stylesheets in your base.html
+
+base.html
+::
+    {# Global stylesheets #}
+    <link href="{% static 'css/bootstrap.min.css' %}" type="text/css" rel="stylesheet" />
+    <link href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}" type="text/css" rel="stylesheet" />
+    <link href="{% static 'css/streamfields.css' %}" type="text/css" rel="stylesheet" />
+    <link href="{% static 'css/owl.carousel.css' %}" type="text/css" rel="stylesheet" />
+    <link href="{% static 'css/revolution_slider.css' %}" type="text/css" rel="stylesheet" />
+
+    {# Global javascript #}
+    <script type="text/javascript" src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/isotope.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/magnific-popup.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/revolution.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/tools.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/revolution_slider.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+
+
+10. Extra:
+
+add to templates/wagtailadmin/admin_base.html (if overridden)
+::
+    {% block css %}
+    ...
+    <link rel="stylesheet" href="{% static 'css/custom-admin.css' %}" type="text/css" />
+    {% endblock %}
+
+
+    {% block js %}
+    ...
+    <script src="{% static 'js/custom-admin.js' %}"></script>
+    <script src="{% static 'js/colorPicker.js' %}"></script>
+    ...
+    {% endblock %}
+
 
 UWKM, 2017
