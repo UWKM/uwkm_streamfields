@@ -2,6 +2,7 @@ from django.conf import settings
 
 from django import forms 
 from django.db import models
+from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
 from modelcluster.fields import ParentalKey
@@ -566,8 +567,6 @@ class ProjectBlock(blocks.StructBlock):
     image = ImageChooserBlock()
     link = blocks.PageChooserBlock()
 
-
-
 grid_array = \
     [('tabellen', TableStructBlock(
         label='Tabellen',
@@ -674,6 +673,38 @@ grid_array = \
         template = 'streamfields/project.html',
         icon="fa-comments-o"))
     ,]
+
+# Check if oscar_wagtail is in installed apps so they can access product streamfield
+if 'oscar_wagtail' in settings.INSTALLED_APPS:
+    from oscar.core.loading import get_model
+    class ProductChooserBlock(blocks.ChooserBlock):
+        @cached_property
+        def target_model(self):
+            return get_model('catalogue', 'Product')
+
+        widget = forms.Select
+
+        class Meta:
+            app_label = 'catalogue'
+
+        def value_for_form(self, value):
+            # return the key value for the select field
+            if isinstance(value, self.target_model):
+                return value.pk
+            else:
+                return value
+
+
+    class ProductBlock(blocks.StructBlock):
+        products = blocks.ListBlock(ProductChooserBlock)
+    
+    grid_array.append(
+        ('product', blocks.ListBlock(
+            ProductBlock(),
+            template = 'streamfields/product.html',
+            icon="fa-shopping-cart")
+        ),
+    )
 
 validated_grid_array = []
 STREAMFIELDS = settings.STREAMFIELDS
