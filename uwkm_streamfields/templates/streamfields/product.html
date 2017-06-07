@@ -1,0 +1,46 @@
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+{% load static %}
+{% load product_tags %}
+{% load thumbnail %}
+{% load currency_filters %}
+
+{% for item in self %}
+    {% for product in item.products %}
+        <div class="col-md-12">
+            <div class="offer_box">
+                <figure>
+                    {% with image=product.primary_image %}
+                        {% thumbnail image.original "445x333" upscale=False as thumb %}
+                        <a href="{{ product.get_absolute_url }}">
+                            <img src="{{ thumb.url }}" alt="{{ product.get_title }}" />
+                            <div class="overlay">
+                                <img src="{% static 'images/aslan-top4.png' %}" alt=""/>
+                            </div>
+                        </a>
+                        {% endthumbnail %}
+                    {% endwith %}
+                </figure>
+                <div class="fig_info">
+                    <h3>{{ product.get_title }}</h3>
+                    <ul>
+                        {% for av in product.attribute_values.all %}
+                            <li>{{ av.value_as_html }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% if product.stockrecords.all %}
+                    <div class="offer_rates">
+                        <p><strong>{{ product.stockrecords.first.price_excl_tax|currency:"EUR" }}</strong></p>
+                    </div>
+                {% endif %}
+                <div class="btns">
+                    {% if product.categories.first %}
+                        <p>&gt;&gt;meer <a href="{{ product.categories.first.get_absolute_url }}">{{ product.categories.first }}</a></p>
+                    {% endif %}
+                    <a class="btn" href="{{ product.get_absolute_url }}"><img src="{% static 'images/forward_wit.svg' %}" alt=""></a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endfor %}
