@@ -153,3 +153,18 @@ span.white {
 	padding-top: 1em !important;
 	padding-bottom: 1em !important;*/
 }
+
+
+
+
+.hiddenchildren .sequence-member-inner div ul li{
+    display: none !important;
+}
+
+.hiddenchildren .sequence-member-inner div ul li.required{
+    display: block !important;
+}
+
+.hidden {
+	display: none !important;
+}

@@ -58,6 +58,23 @@ $(document).ready(function(){
 	});
 	$('li.formbuilder-type select[name$="field_type"]').trigger('change');
 
+	$.each($('#body-list > li'), function(){
+		var title = $(this).find('input[type=text]:first').val();
+		$(this).find('.sequence-container-inner:first').prepend('<span style="font-size:20px;text-transform:uppercase;clear:both;">' + title + '</span>');
+	});
+
+
+	var collapsebutton = '<button type="button" title="Collapse" id="body-0-value-0-collapse" class="button icon text-replace hover-no icon-cross toggle-button">Collapse</button>';
+
+	$('.button-group').append(collapsebutton);
+
+	$(document).on('click', '.toggle-button', function(){
+		$(this).closest('.sequence-member').toggleClass('hiddenchildren');
+		$(this).toggleClass('icon-cross').toggleClass('icon-plus');
+		$(this).closest('.sequence-controls').next().find('button:last').toggleClass('hidden')
+	});
+
+	$('.toggle-button').trigger('click');
 
 });
 
