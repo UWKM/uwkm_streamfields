@@ -1,0 +1,18 @@
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+<div class="col-md-12">
+	{% for gallery in self %}
+
+		<div class="masonry-gallery clearfix lightbox columns-{{ gallery.columns }}" data-columns="{{ gallery.columns }}"{% if gallery.big_img %} data-img-big="{{ gallery.big_img }}"{% endif %} data-plugin-options='{"delegate": "a", "gallery": {"enabled": true}}'>
+		    {% for item in gallery.image %}
+		    	<a class="image-hover" href="{{ item.file.url }}">
+		    		<span class="image-hover-icon image-hover-dark"></span>
+		    		<img src="{{ item.file.url }}" alt="{{ item.file.title }}">
+		    	</a>
+		    {% endfor %}
+		</div>
+
+	{% endfor %}
+</div>

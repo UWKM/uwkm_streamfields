@@ -161,7 +161,7 @@ span.white {
     display: none !important;
 }
 
-.hiddenchildren .sequence-member-inner div ul li.required{
+.sequence-member-inner .hiddenchildren .sequence-member-inner div ul li:first-child {
     display: block !important;
 }
 

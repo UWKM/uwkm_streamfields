@@ -1,0 +1,38 @@
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+
+<section class="home_slider">
+    <div class="single-slide">
+        {% for item in self %}
+        <div>
+            <figure>
+                {% image item.image original %}
+            </figure>
+            {% if item.button %}
+            <div class="banner_over {{item.cta_pos}}">
+                <a href="{% if item.cta_link_type == 'wagtail' %}{{item.cta_page_link.url}}{% else %}{{item.cta_url}}{% endif %}">
+                    <img src="{% static 'images/forward_wit.svg' %}" alt="">
+                    <span>{{item.cta_text}}</span>
+                </a>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+   <div class="banner-thumb" id="banner-thumb">
+       <div class="thumb-slide">
+        {% for item in self %}
+            <div>
+                <div class="box-data">
+                    <div class="line"></div>
+                    <div class="data">
+                        <p><strong>{{item.name}}</strong>{{item.subtext}}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+       </div>
+  </div>
+</section>

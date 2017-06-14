@@ -726,8 +726,9 @@ else:
 
 class GridBlock(blocks.StructBlock):
     title = blocks.CharBlock(
-        max_length=255,
-        required=False
+        max_length=50,
+        required=False,
+        classname="grid-title"
     )
     grid = GridChoiceBlock(
         label = 'Breedte kolom',
