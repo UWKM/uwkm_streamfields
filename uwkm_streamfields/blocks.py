@@ -14,7 +14,7 @@ from wagtail.wagtailforms.models import AbstractEmailForm, AbstractFormField
 from wagtail.wagtaildocs.blocks import DocumentChooserBlock
 
 from .icons import IconChoiceBlock
-from .widgets import *
+from .widgets import ColorPickerWidget
 
 TABLE_OPTIONS = {
     'minSpareRows': 0,
@@ -328,6 +328,11 @@ class BackgroundBlock(blocks.StructBlock):
         max_value = 999,
         default = 250,
     )
+    columns = blocks.ChoiceBlock(
+        label = 'Kolommen',
+        choices = [('2', 'Twee'), ('1', 'Een')],
+        default = '2',
+    )
     text_left = blocks.RichTextBlock(
         label = 'Tekst links',
         help_text = 'Tekst aan de linkerkant op de achtergrond.',
@@ -567,6 +572,23 @@ class ProjectBlock(blocks.StructBlock):
     image = ImageChooserBlock()
     link = blocks.PageChooserBlock()
 
+    
+class GoogleMapsBlock(blocks.StructBlock):
+    address = blocks.TextBlock(
+        label = 'Adres',
+        help_text = 'Adres, plaats, land',
+        required = False,
+    )
+    height = blocks.IntegerBlock(
+        label = 'Hoogte',
+        help_text = 'Hoogte van het blok in pixels.',
+        min_value = 0,
+        max_value = 999,
+        default = 250,
+    )
+
+
+
 grid_array = \
     [('tabellen', TableStructBlock(
         label='Tabellen',
@@ -672,6 +694,9 @@ grid_array = \
         ProjectBlock(),
         template = 'streamfields/project.html',
         icon="fa-comments-o"))
+    ,('google_maps', GoogleMapsBlock(
+        template = 'streamfields/google_maps.html',
+        icon='fa-map-o'))
     ,]
 
 # Check if oscar_wagtail is in installed apps so they can access product streamfield

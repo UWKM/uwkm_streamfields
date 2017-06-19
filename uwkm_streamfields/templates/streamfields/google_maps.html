@@ -1,0 +1,17 @@
+{% load wagtailsettings_tags %}
+{% get_settings use_default_site=True %}
+
+{% if settings.uwkm_streamfields.streamfieldssettings.google_api_key %}
+	<div class="col-md-12">
+		<div id="map2" class="grayscale" style="height: {{ self.height }}px">
+			<iframe
+	            src="https://www.google.com/maps/embed/v1/place?q={{ self.address|striptags }}
+	                &amp;key={{ settings.uwkm_streamfields.streamfieldssettings.google_api_key }}
+	                &amp;zoom=15;"
+	            style="height:100%;width:100%;left:0;top:0;position:absolute;">
+	        </iframe>
+	    </div>
+	</div>
+{% else %}
+	<p>Er is geen Google API key gevonden, <a target="_blank" href="{% url 'wagtailadmin_home' %}">maak aan.</a></p>
+{% endif %}

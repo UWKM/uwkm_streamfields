@@ -8,12 +8,19 @@
 		<div class="{{ item.type_field }}" style="background-image:url('{{ item.background_image.file.url }}'); height: {{ item.block_height }}px;">
 			<div class="container content-sm">
 				<div class="row">
-					<div class="col-md-6 text-right" style="padding-right: 5px; color: {{ item.text_color }} !important;">
-		       			{{ item.text_left }}
-		       		</div>
-					<div class="col-md-6" style="padding-left: 5px; color: {{ item.text_color }} !important;">
-		       			{{ item.text_right }}
-		       		</div>
+					{% if item.columns == '2' %}
+						<div class="col-md-6 text-right" style="padding-right: 5px; color: {{ item.text_color }} !important;">
+			       			{{ item.text_left }}
+			       		</div>
+						<div class="col-md-6" style="padding-left: 5px; color: {{ item.text_color }} !important;">
+			       			{{ item.text_right }}
+			       		</div>
+		       		{% else %}
+		       			<div class="col-md-12 text-center" style="padding-right: 5px; color: {{ item.text_color }} !important;">
+			       			{{ item.text_left }}
+			       			{{ item.text_right }}
+			       		</div>
+		       		{% endif %}
 	       		</div>
 	       </div>
 	   </div>

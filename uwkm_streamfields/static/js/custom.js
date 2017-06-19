@@ -126,3 +126,31 @@ if (owls.length > 0) {
 	});
 
 }
+
+
+
+$('.single-slide').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+     dots: false,
+    asNavFor: '.thumb-slide'
+});
+$('.thumb-slide').slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    asNavFor: '.single-slide',
+    focusOnSelect: true,
+    arrows: false	,
+    responsive: [
+    {
+      breakpoint: 767,
+      settings: {
+          arrows: true,
+          slidesToShow: 2,
+          slidesToScroll: 1,
+      }
+    }
+    ]
+});
+

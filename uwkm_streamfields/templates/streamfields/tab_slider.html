@@ -12,7 +12,7 @@
             </figure>
             {% if item.button %}
             <div class="banner_over {{item.cta_pos}}">
-                <a href="{% if item.cta_link_type == 'wagtail' %}{{item.cta_page_link.url}}{% else %}{{item.cta_url}}{% endif %}">
+                <a style="background-color: {{ item.cta_color_picker }} !important;" href="{% if item.cta_link_type == 'wagtail' %}{{item.cta_page_link.url}}{% else %}{{item.cta_url}}{% endif %}">
                     <img src="{% static 'images/forward_wit.svg' %}" alt="">
                     <span>{{item.cta_text}}</span>
                 </a>

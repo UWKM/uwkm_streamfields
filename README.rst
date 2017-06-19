@@ -72,17 +72,6 @@ somepage.html
 settings.py
 ::
     BS_SIZE = 'sm'
-
-    CP_COLORS = [
-        '#0099ff',
-        '#00cc00',
-        '#ffff00',
-        '#ff6600',
-        '#cc0000',
-        '#ffffff',
-        '#000000',
-    ]
-
     STREAMFIELDS = '__all__'
     EXCLUDE_STREAMFIELDS = []
 
@@ -107,6 +96,7 @@ base.html
     <script type="text/javascript" src="{% static 'js/revolution.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/tools.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/revolution_slider.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
 
 
@@ -122,6 +112,7 @@ add to templates/wagtailadmin/admin_base.html (if overridden)
 
     {% block js %}
     ...
+    <script type="text/javascript">var collapse = '{{ settings.uwkm_streamfields.streamfieldssettings.collapse_streamfields }}' == 'True';</script>
     <script src="{% static 'js/custom-admin.js' %}"></script>
     <script src="{% static 'js/colorPicker.js' %}"></script>
     ...

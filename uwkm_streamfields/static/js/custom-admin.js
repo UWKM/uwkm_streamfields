@@ -58,28 +58,30 @@ $(document).ready(function(){
 	});
 	$('li.formbuilder-type select[name$="field_type"]').trigger('change');
 
-
-	$.each($('#body-list > li'), function(){
-		var titles = [];
-		console.log($(this).find('.grid-title'))
-		$.each($(this).find('.grid-title'), function(){
-			titles.push($(this).find('input[type=text]:first').val() ); 
+	if (collapse) {
+		$.each($('#body-list > li'), function(){
+			var titles = [];
+			console.log($(this).find('.grid-title'))
+			$.each($(this).find('.grid-title'), function(){
+				titles.push($(this).find('input[type=text]:first').val() ); 
+			});
+			$(this).find('.sequence-container-inner:first').prepend('<span style="font-size:20px;text-transform:uppercase;clear:both;">' + titles.join(', ') + '</span>');
 		});
-		$(this).find('.sequence-container-inner:first').prepend('<span style="font-size:20px;text-transform:uppercase;clear:both;">' + titles.join(', ') + '</span>');
-	});
 
 
-	var collapsebutton = '<button type="button" title="Collapse" id="body-0-value-0-collapse" class="button icon text-replace hover-no icon-cross toggle-button">Collapse</button>';
+		var collapsebutton = '<button type="button" title="Collapse" id="body-0-value-0-collapse" class="button icon text-replace hover-no icon-cross toggle-button">Collapse</button>';
 
-	$('.button-group').append(collapsebutton);
+		$('.button-group').append(collapsebutton);
 
-	$(document).on('click', '.toggle-button', function(){
-		$(this).closest('.sequence-member').toggleClass('hiddenchildren');
-		$(this).toggleClass('icon-cross').toggleClass('icon-plus');
-		$(this).closest('.sequence-controls').next().find('button:last').toggleClass('hidden')
-	});
+		$(document).on('click', '.toggle-button', function(){
+			$(this).closest('.sequence-member').toggleClass('hiddenchildren');
+			$(this).toggleClass('icon-cross').toggleClass('icon-plus');
+			$(this).closest('.sequence-controls').next().find('button:last').toggleClass('hidden')
+		});
 
-	$('.toggle-button').trigger('click');
+		$('.toggle-button').trigger('click');
 
+		
+	}
 });
 

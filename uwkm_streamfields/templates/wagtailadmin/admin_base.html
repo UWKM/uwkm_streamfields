@@ -27,8 +27,11 @@
     <script src="{% static 'wagtailadmin/js/vendor/jquery.dlmenu.js' %}"></script>
     <script src="{% static 'wagtailadmin/js/vendor/tag-it.js' %}"></script>
     <script src="{% static 'wagtailadmin/js/core.js' %}"></script>
+    <script type="text/javascript">var collapse = '{{ settings.uwkm_streamfields.streamfieldssettings.collapse_streamfields }}' == 'True';</script>
     <script src="{% static 'js/custom-admin.js' %}"></script>
     <script src="{% static 'js/colorPicker.js' %}"></script>
+
+
     {% hook_output 'insert_global_admin_js' %}
 
     {% main_nav_js %}
