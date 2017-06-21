@@ -154,6 +154,10 @@ span.white {
 	padding-bottom: 1em !important;*/
 }
 
+li.sequence-member .struct-block .sequence-container,
+li.sequence-member .struct-block .fields {
+	width: 100% !important;
+}
 
 
 

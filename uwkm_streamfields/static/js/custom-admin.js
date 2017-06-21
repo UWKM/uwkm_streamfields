@@ -59,19 +59,22 @@ $(document).ready(function(){
 	$('li.formbuilder-type select[name$="field_type"]').trigger('change');
 
 	if (collapse) {
-		$.each($('#body-list > li'), function(){
+		$.each($('.sequence:has(.grid-title):first > li'), function(){
 			var titles = [];
-			console.log($(this).find('.grid-title'))
 			$.each($(this).find('.grid-title'), function(){
-				titles.push($(this).find('input[type=text]:first').val() ); 
+				width = $(this).parent().next().find('select option[selected]').text();
+				if (width == '---------') {
+					width = '*';
+				}
+				titles.push($(this).find('input[type=text]:first').val() + '[' + width + ']' ); 
 			});
-			$(this).find('.sequence-container-inner:first').prepend('<span style="font-size:20px;text-transform:uppercase;clear:both;">' + titles.join(', ') + '</span>');
+			$(this).find('.sequence-type-list > .sequence-container-inner:first').prepend('<span style="font-size:20px;text-transform:uppercase;clear:both;">' + titles.join(', ') + '</span>');
 		});
-
 
 		var collapsebutton = '<button type="button" title="Collapse" id="body-0-value-0-collapse" class="button icon text-replace hover-no icon-cross toggle-button">Collapse</button>';
 
-		$('.button-group').append(collapsebutton);
+		$('.grid-title').closest('.sequence-member-inner').prev().append(collapsebutton);
+		$('.sequence:has(.grid-title) > li > .sequence-controls > .button-group').append(collapsebutton);
 
 		$(document).on('click', '.toggle-button', function(){
 			$(this).closest('.sequence-member').toggleClass('hiddenchildren');
@@ -81,6 +84,8 @@ $(document).ready(function(){
 
 		$('.toggle-button').trigger('click');
 
+		// if errors open again...
+		$('.sequence:has(.grid-title):first > li:has(.error-message) .toggle-button').trigger('click');
 		
 	}
 });
