@@ -82,10 +82,13 @@ $(document).ready(function(){
 			$(this).closest('.sequence-controls').next().find('button:last').toggleClass('hidden')
 		});
 
-		$('.toggle-button').trigger('click');
+		setTimeout(function(){
+			$('.toggle-button').trigger('click');
 
-		// if errors open again...
-		$('.sequence:has(.grid-title):first > li:has(.error-message) .toggle-button').trigger('click');
+			// if errors open again...
+			$('.sequence:has(.grid-title):first > li:has(.error-message) .toggle-button').trigger('click');
+		}, 10);
+		
 		
 	}
 });

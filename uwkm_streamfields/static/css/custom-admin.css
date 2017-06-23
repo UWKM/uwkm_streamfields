@@ -159,6 +159,9 @@ li.sequence-member .struct-block .fields {
 	width: 100% !important;
 }
 
+.handsontable table.htCore {
+	margin-top: 1px !important;
+}
 
 
 .hiddenchildren .sequence-member-inner div ul li{
