@@ -15,5 +15,6 @@ class StreamfieldsSettings(BaseSetting):
     )
     google_api_key = models.CharField(
     	max_length=255,
-    	help_text="API Key van Google"
+    	help_text="API Key van Google",
+        blank=True
     )

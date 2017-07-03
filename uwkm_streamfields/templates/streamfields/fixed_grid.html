@@ -5,7 +5,7 @@
 <section>
 	<div class="container">
 		{% for block in self %}
-			<div class="{{ block.grid }}" style="padding: 0px;">
+			<div class="{{ block.grid }} {{ block.grid_classes }}" style="padding: 0px;">
 				{{ block.content }}
 			</div>
 		{% endfor %}

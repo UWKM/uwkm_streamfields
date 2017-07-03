@@ -759,9 +759,16 @@ class GridBlock(blocks.StructBlock):
         label = 'Breedte kolom',
         help_text = 'De breedte kolommen (*/12).',
     )
+    grid_classes = blocks.CharBlock(
+        max_length=255,
+        required=False,
+        label = 'Classes',
+        help_text = 'De classes van het grid.',
+    )
     content = blocks.StreamBlock(
         validated_grid_array,
         label="Inhoud"
     )
+
 
 
