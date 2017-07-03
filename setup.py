@@ -50,7 +50,7 @@ setup(
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=[
-        'wagtail>=1.9',
+        'wagtail>=1.10',
         'wagtailfontawesome',
     ],
 
