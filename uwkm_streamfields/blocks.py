@@ -638,8 +638,7 @@ grid_array = \
         OwlGalleryBlock(),
         template = 'streamfields/owl_gallery.html',
         icon='image',))
-    ,('afbeelding', blocks.ListBlock(
-        ImageChooserBlock(),
+    ,('afbeelding', ImageChooserBlock(
         template = 'streamfields/image.html',
         icon='image'))
     ,('divider', blocks.ListBlock(

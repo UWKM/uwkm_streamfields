@@ -5,9 +5,9 @@
 <div class="col-md-12">
 	{% for image in self %}
 		<div class="lightbox" data-img-big="4" data-plugin-options='{"delegate": "a", "gallery": {"enabled": true}}'>
-	    	<a class="image-hover lightbox" href="{{ image.file.url }}">
+	    	<a class="image-hover lightbox" href="{{ image.image.file.url }}">
 	    		<span class="image-hover-icon image-hover-dark"></span>
-	    		<img src="{{ image.file.url }}" {% if image.animation %}class="animated invisible" data-animation="{{ image.animation }}"{% endif %} />
+	    		<img src="{{ image.image.file.url }}" {% if image.animation %}class="animated invisible" data-animation="{{ image.animation }}"{% endif %} />
 	    	</a>
 		</div>
 	{% endfor %}
